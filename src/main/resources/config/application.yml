@@ -1,0 +1,18 @@
+#  yml和properties同时存在时，以properties为主。YAML一定要按格式来存放，否则会出现难以发现的问题
+#YAML是json的超集，提供了方便的格式用于层次化配置数据。
+#YAML语法格式：
+#标准格式：key:(空格)value，使用空格代表层级关系，以“：”结束
+
+#SpringBoot会从以下位置加载.properties或.yml配置文件：
+#
+#当前目录下的/config目录
+#当前目录
+#classpath下的/config目录
+#classpath的根目录
+#
+#使用.properties或.yml配置文件可以对SpringBoot的自动配置进行覆盖
+#
+
+spring:
+  profiles:
+    active: dev #动态切换配置文件

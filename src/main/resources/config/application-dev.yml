@@ -1,0 +1,47 @@
+#  yml和properties同时存在时，以properties为主。YAML一定要按格式来存放，否则会出现难以发现的问题，这点比较坑，使用时要注意
+#YAML是json的超集，提供了方便的格式用于层次化配置数据。
+#YAML语法格式：
+#标准格式：key:(空格)value，使用空格代表层级关系，以“：”结束
+
+# 端口设置
+server:
+  port: 80
+  servlet:
+    context-path: /dev
+
+# 是否输出debug信息
+debug: false
+
+spring:
+
+  http:
+    encoding:
+      charset: UTF-8
+
+  # mysql 数据库连接参数
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot?useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+
+  #  jpa配置
+  # ddl-auto参数说明
+  #   1、create:每次都删除并新建数据库，数据不被保存。使用create可以根据model创建数据库表。
+  #   2、update:可以自动创建表，每次运行数据不会更新。如果表结构改变，不会删除原来的行，而是新增一列。
+  #   3、validate：验证表结构和插入数据，不会创建新表。如果校验不通过，将启动失败。
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true      #打印sql语句
+
+## 指定mapper文件路径 , 配置包中类别名
+#mybatis:
+#  #  mapper层要想被正确装配，需要在mapper层接口上添加@Mapper注解或者在启动上添加@MapperScan注解完成扫描
+#  mapper-locations: classpath:mappers/*.xml
+#  type-aliases-package: com.hzero.demo.springboot.pojo
+#
+## 指定日志打印级别，输出SQL语句
+#logging:
+#  level:
+#    com.hzero.demo.springboot.mapper: debug

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--  spingboot父依赖，里面包含springboot的默认依赖配置和插件配置-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.1.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.hzero.demo.springboot</groupId>
+    <artifactId>springbootdemo01</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>springbootdemo01</name>
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+
+
+    <dependencies>
+
+        <!--  这里看到的spring-boot-starter-xxx就是SpringBoot的起步依赖。SpringBoot通过提供众多起步依赖降低项目依赖的复杂度。-->
+        <!--  起步依赖本质上是一个Maven项目对象模型，定义了对其他库的传递依赖，这些东西加在一起即支持某项功能。-->
+        <!--  很多起步依赖的命名都暗示了他们提供的某种或某类功能。-->
+
+        <!--  &lt;!&ndash;  核心starter，包含自动配置、日志、YAML等&ndash;&gt;-->
+        <!--  如果项目中引用了spring-boot-starter，默认使用Logback作为日志记录器。-->
+        <!--  <dependency>-->
+        <!--      <groupId>org.springframework.boot</groupId>-->
+        <!--      <artifactId>spring-boot-starter</artifactId>-->
+        <!--  </dependency>-->
+
+        <!--  这里使用到Web 所以引入了web starter，版本号由于在上面的parent中已包含 dependency-management，所以不需要指定 -->
+        <!--  提供web支持，包含RESTful，Spring MVC ，Tomcat内嵌容器等
+        包含了spring-boot-starter-logging，而spring-boot-starter-logging的默认实现是Logback，
+        所以直接将logback.xml或者logback-spring.xml放到根目录下即可。如果日志文件放在别的地方，需要在配置文件中使用logging.config指定。-->
+        <!--        为了springboot能够控制日志的初始化过程，官方建议使用包含-spring的配置文件名称。-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--        提供thymeleaf模板引擎的支持-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!--lombok:省掉重复代码编写例如setter getter toString等-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.4</version>
+        </dependency>
+
+        <!--        要操作数据库，首先添加组件-->
+        <!--        jpa就是利用hibernate生成自动化的sql，直接通过代码调用。JPA可以将Java的普通对象关系映射持久化到数据库中。-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+
+        <!--        &lt;!&ndash; mybatis启动器 &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.mybatis.spring.boot</groupId>-->
+        <!--            <artifactId>mybatis-spring-boot-starter</artifactId>-->
+        <!--            <version>1.3.2</version>-->
+        <!--        </dependency>-->
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!--  创建可执行jar -->
+            <!--  SpringBoot默认的打包方式为jar，并且内嵌web容器。因此我们可以用运行jar包的方式启动一个web程序：-->
+            <!--  java -jar xxx.jar-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

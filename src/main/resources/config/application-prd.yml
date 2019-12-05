@@ -1,0 +1,41 @@
+#  yml和properties同时存在时，以properties为主。YAML一定要按格式来存放，否则会出现难以发现的问题，这点比较坑，使用时要注意
+#YAML是json的超集，提供了方便的格式用于层次化配置数据。
+#YAML语法格式：
+#标准格式：key:(空格)value，使用空格代表层级关系，以“：”结束
+
+server:
+  port: 80
+  servlet:
+    context-path: /prd
+
+debug: false
+
+spring:
+
+  http:
+    encoding:
+      charset: UTF-8
+
+#  # 数据库连接参数
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/java2demo?useUnicode=true&characterEncoding=utf8
+#    username: root
+#    password: root
+#
+#    # 数据库连接池
+#    hikari:
+#      maximum-pool-size: 30     # 最大连接数
+#      minimum-idle: 10          # 最小连接数
+#      idle-timeout: 60000       # 超时时间
+#
+## 指定mapper文件路径 , 配置包中类别名
+#mybatis:
+#  #  mapper层要想被正确装配，需要在mapper层接口上添加@Mapper注解或者在启动上添加@MapperScan注解完成扫描
+#  mapper-locations: classpath:mappers/*.xml
+#  type-aliases-package: com.hzero.demo.springboot.pojo
+#
+## 指定日志打印级别，输出SQL语句
+#logging:
+#  level:
+#    com.hzero.demo.springboot.mapper: debug
