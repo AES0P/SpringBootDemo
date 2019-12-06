@@ -18,9 +18,38 @@ spring:
     encoding:
       charset: UTF-8
 
+  # 静态文件请求匹配方式
+  mvc:
+    static-path-pattern: /**
+
+  #thymelea模板配置
+  thymeleaf:
+    enabled: true
+    servlet:
+      content-type: text/html
+    prefix: classpath:/templates/   # 访问templates下的html文件需要配置模板，映射
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    #热部署文件，页面不产生缓存，及时更新,不然没法看到实时页面
+    cache: false
+    #是否在呈现模板之前检查模板是否存在
+    check-template: true
+    #检查模板位置是否正确(默认值:true)
+    check-template-location: true
+
+  #声明thymeleaf使用非严格的html。
+  #    check-template: true
+  #    check-template-location: true
+  #    mode: LEGACYHTML5
+
+  #  #不扫描thymelea模板文件
+  #  freemarker:
+  #    checkTemplateLocation: false
+
   # mysql 数据库连接参数
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/springboot?useSSL=false&serverTimezone=GMT%2B8
     username: root
     password: 123456
@@ -32,8 +61,11 @@ spring:
   #   3、validate：验证表结构和插入数据，不会创建新表。如果校验不通过，将启动失败。
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true      #打印sql语句
+    #open-in-view会注册一个OpenEntityManagerInViewInterceptor。在处理请求时，将 EntityManager 绑定到整个处理流程中（model->dao->service->controller），
+    #开启和关闭session。这样一来，就不会出现 no Session 的错误了（可以尝试将该配置的值置为 false, 就会出现懒加载的错误了。）
+    open-in-view: false
 
 ## 指定mapper文件路径 , 配置包中类别名
 #mybatis:

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+<div>
+</div>
+<a th:text="${title}"></a>
+<table border="1">
+    <thead>
+    <tr>
+        <td>id</td>
+        <td>username</td>
+        <td>password</td>
+        <td>sexy</td>
+        <td>age</td>
+        <td>birthday</td>
+        <td>role</td>
+        <td>comments</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${userList.size()} eq 0">
+        <td colspan="3">没有用户信息！！</td>
+    </tr>
+    <tr th:each="user : ${userList}">
+
+        <td th:text="${user.id}">1</td>
+        <td>
+            <a
+               th:href="@{'detail/' + ${user.id}}"
+               th:text="${user.username}">wss
+            </a>
+        </td>
+
+        <td th:text="${user.password}">11</td>
+        <td th:text="${user.sexy}">11</td>
+        <td th:text="${user.age}">11</td>
+        <td th:text="${user.birthday}">11</td>
+        <td th:text="${user.role}">11</td>
+        <td th:text="${user.comments}">11</td>
+
+    </tr>
+    </tbody>
+
+</table>
+</body>
+</html>
