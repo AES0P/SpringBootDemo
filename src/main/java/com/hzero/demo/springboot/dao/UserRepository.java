@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@Repository(value = "userRepository")
 public interface UserRepository extends JpaRepository<User, Integer>, UserDao {
 
     //自定义方法名规范： findXXBy,readXXBy,queryXXBy,countXXBy, getXXBy做为前缀，拼接属性（首字母大写）

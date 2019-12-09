@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+//要想返回的数据不是json，只需要写@Controller而不需要@ResponseBody
 @Controller
 @RequestMapping("/thymelea")
-//@RestController//使用这个注解，无法跳转页面,页面中会显示json
 public class ThymeleaTestController {
 
     //关于跳转：取决于application.yml中的 动态视图解析器（thymelea） 是否配置

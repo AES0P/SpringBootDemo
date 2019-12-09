@@ -2,6 +2,7 @@ package com.hzero.demo.springboot.pojo;
 
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -22,6 +23,7 @@ import java.util.Date;
 @AllArgsConstructor//该注解使用在类上，该注解提供一个全参数的构造方法，默认不提供无参构造。
 @NoArgsConstructor//该注解使用在类上，该注解提供一个无参构造
 @Entity//JPA提供自动生成数据库表的功能，使用注解@Entity，标注id@Id，自增长@GeneratedValue即可
+@Component(value = "user")
 public class User implements Serializable {
 
     @Id

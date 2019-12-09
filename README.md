@@ -1,5 +1,6 @@
 
-## SpringBoot & SpringCloud ，quote from https://github.com/leekoko/microservice
+## SpringBoot & SpringCloud 
+(docs quote from https://github.com/leekoko/microservice)
 
 ### [SpringBoot整合Mybatis](docs/SpringBoot-Mybatis.md)
 

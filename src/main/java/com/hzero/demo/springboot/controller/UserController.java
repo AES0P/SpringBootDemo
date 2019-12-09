@@ -3,19 +3,20 @@ package com.hzero.demo.springboot.controller;
 import com.hzero.demo.springboot.dao.UserRepository;
 import com.hzero.demo.springboot.pojo.User;
 import com.hzero.demo.springboot.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+
+@RestController//使用这个注解，无法跳转页面,页面中的数据会显示成json格式
 public class UserController {
 
-    @Autowired
+    @Resource(name = "userRepository")
     private UserRepository userRepository;
 
-    @Autowired
+    @Resource(name = "userService")
     private UserService userService;
 
     /**
@@ -101,13 +102,21 @@ public class UserController {
 
     /**
      * 测试jpa兼容其它ORM框架
-     * 访问链接： http://localhost/dev/doSomething
+     * 访问链接： http://localhost/dev/findUserByIdNoJpa/1
      */
-    @GetMapping(value = "/doSomething")
-    public void doSomething() {
-        userRepository.doSomething();
-    }
+    @GetMapping(value = "/findUserByIdNoJpa/{id}")
+    public String findUserByIdNoJpa(@PathVariable("id") int id) {
 
+        User user = null;
+        if ((user = userRepository.findUserById(id)) != null) {
+
+            return userRepository.findUserById(id).toString();
+
+        } else {
+            return "null";
+        }
+
+    }
 
     /**
      * 测试事务：插入两条数据

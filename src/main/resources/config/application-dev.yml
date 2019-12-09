@@ -67,13 +67,17 @@ spring:
     #开启和关闭session。这样一来，就不会出现 no Session 的错误了（可以尝试将该配置的值置为 false, 就会出现懒加载的错误了。）
     open-in-view: false
 
-## 指定mapper文件路径 , 配置包中类别名
-#mybatis:
-#  #  mapper层要想被正确装配，需要在mapper层接口上添加@Mapper注解或者在启动上添加@MapperScan注解完成扫描
-#  mapper-locations: classpath:mappers/*.xml
-#  type-aliases-package: com.hzero.demo.springboot.pojo
-#
-## 指定日志打印级别，输出SQL语句
-#logging:
-#  level:
-#    com.hzero.demo.springboot.mapper: debug
+# 指定mapper文件路径 , 配置包中类别名
+mybatis:
+  #  mapper层要想被正确装配，需要在mapper层接口上添加@Mapper注解或者在启动上添加@MapperScan注解完成扫描
+  mapper-locations: classpath:mappers/*.xml
+  type-aliases-package: com.hzero.demo.springboot.pojo
+
+# 指定日志打印级别，输出SQL语句
+#showSql
+logging:
+  level:
+    com:
+      example:
+        mapper : debug
+

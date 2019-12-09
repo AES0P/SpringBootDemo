@@ -1,5 +1,6 @@
 package com.hzero.demo.springboot;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 如果需要扫描其他路径，需要增加@ComponentScan或者@Import注解
  */
 @SpringBootApplication
+@MapperScan("com.hzero.demo.springboot.mapper")
 public class Springbootdemo01Application {
 
     public static void main(String[] args) {
